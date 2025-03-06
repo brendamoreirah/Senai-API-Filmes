@@ -12,8 +12,8 @@ using api_filmes_senai.Context;
 namespace api_filmes_senai.Migrations
 {
     [DbContext(typeof(Filmes_Context))]
-    [Migration("20250218193511_Db_Filmes")]
-    partial class Db_Filmes
+    [Migration("20250306171957_Db_Filmes-V2")]
+    partial class Db_FilmesV2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace api_filmes_senai.Migrations
                     b.ToTable("Filme");
                 });
 
-            modelBuilder.Entity("api_filmes_senai.Domains.Genero", b =>
+            modelBuilder.Entity("api_filmes_senai.Domains.Generos", b =>
                 {
                     b.Property<Guid>("IdGenero")
                         .ValueGeneratedOnAdd()
@@ -60,9 +60,36 @@ namespace api_filmes_senai.Migrations
                     b.ToTable("Generos");
                 });
 
+            modelBuilder.Entity("api_filmes_senai.Domains.Usuario", b =>
+                {
+                    b.Property<Guid>("IdUsuario")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(50)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(50)");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("VARCHAR(60)");
+
+                    b.HasKey("IdUsuario");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.ToTable("Usuario");
+                });
+
             modelBuilder.Entity("api_filmes_senai.Domains.Filme", b =>
                 {
-                    b.HasOne("api_filmes_senai.Domains.Genero", "Genero")
+                    b.HasOne("api_filmes_senai.Domains.Generos", "Genero")
                         .WithMany()
                         .HasForeignKey("IdGenero")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,5 +1,4 @@
-﻿using api_filmes_senai.Controllers;
-using api_filmes_senai.Domains;
+﻿using api_filmes_senai.Domains;
 
 namespace api_filmes_senai.Interfaces
 {

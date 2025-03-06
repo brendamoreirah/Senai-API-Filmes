@@ -1,6 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿
 using api_filmes_senai.Context;
-using api_filmes_senai.Controllers;
 using api_filmes_senai.Domains;
 using api_filmes_senai.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +10,9 @@ namespace api_filmes_senai.Repositories
     {
         private readonly Filmes_Context _context;
 
-        public  FilmeRepository(Filmes_Context contexto)
+        public  FilmeRepository(Filmes_Context context)
         {
-            _context = contexto;
+            _context = context;
         }
 
  
@@ -77,7 +76,7 @@ namespace api_filmes_senai.Repositories
         {
             try
             {
-                Filme filmeBuscado = Context.Filmes_Context.Find(id);
+                Filme filmeBuscado = _context.Filmes.Find(id);
 
                 if (filmeBuscado != null)
                 {
@@ -97,7 +96,7 @@ namespace api_filmes_senai.Repositories
 
             try
             {
-                List<Filme> listaDeFilmes = _context.Filmes.Include(g => g.Generos)
+                List<Filme> listaDeFilmes = _context.Filmes.Include(g => g.Genero)
 
                     //Seleciona o que quer trazer na requisicao
                     .Select(f => new Filme

@@ -21,10 +21,8 @@ namespace api_filmes_senai.Context
         public DbSet<Generos> Generos { get; set; }
         public DbSet<Filme> Filmes { get; set; }
 
-        internal static Filme Find(Guid id)
-        {
-            throw new NotImplementedException();
-        }
+        public DbSet<Usuario> Usuarios { get; set; }    
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
