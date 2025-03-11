@@ -509,3 +509,5 @@ C:\Users\47231372899\Desktop\Senai-API-Filmes\bin\Debug\net8.0\Swashbuckle.AspNe
 C:\Users\47231372899\Desktop\Senai-API-Filmes\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\47231372899\Desktop\Senai-API-Filmes\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\47231372899\Desktop\Senai-API-Filmes\obj\Debug\net8.0\api_filmes_senai.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\47231372899\Desktop\Senai-API-Filmes\bin\Debug\net8.0\api_filmes_senai.xml
+C:\Users\47231372899\Desktop\Senai-API-Filmes\obj\Debug\net8.0\api_filmes_senai.xml

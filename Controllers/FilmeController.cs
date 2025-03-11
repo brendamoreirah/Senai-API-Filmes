@@ -1,6 +1,7 @@
 ﻿using api_filmes_senai.Domains;
 using api_filmes_senai.Interfaces;
 using api_filmes_senai.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,7 +20,11 @@ namespace api_filmes_senai.Controllers
 
 
         }
-
+        /// <summary>
+        /// EndPoint para Listar um Filme
+        /// </summary>
+        /// <param name="id"> id do filme listado</param>
+        /// <returns>Filme Listado</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -36,6 +41,12 @@ namespace api_filmes_senai.Controllers
             }
 
         }
+        /// <summary>
+        /// EndPoint para Cadastrar umc Filme
+        /// </summary>
+        /// <param name="id"> id do filme cadastrado</param>
+        /// <returns>Filme Cadastrado</returns>
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Filme novoFilme)
         {
@@ -50,7 +61,12 @@ namespace api_filmes_senai.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        /// <summary>
+        /// EndPoint para Buscar um Filme
+        /// </summary>
+        /// <param name="id"> id do filme buscado</param>
+        /// <returns>Filme Buscado</returns>
+    
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -65,7 +81,12 @@ namespace api_filmes_senai.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// EndPoint para Deletar um Filme
+        /// </summary>
+        /// <param name="id"> id do filme deletado</param>
+        /// <returns>Filme Deletado</returns>
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -80,7 +101,12 @@ namespace api_filmes_senai.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        /// EndPoint para Atualizar um Filme
+        /// </summary>
+        /// <param name="id"> id do filme atualizado</param>
+        /// <returns>Filme Atualizado</returns>
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, Filme filme)
         {
@@ -95,7 +121,12 @@ namespace api_filmes_senai.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        /// <summary>
+        /// EndPoint para Listar um Filme
+        /// </summary>
+        /// <param name="id"> id do filme listado</param>
+        /// <returns>Filme Listado</returns>
+        [Authorize]
         [HttpGet("ListarPorGenero/{id}")]
         public IActionResult GetByGenero(Guid id)
         {
